@@ -1,0 +1,11 @@
+[project]
+name = "23-01-youtube-transcript-downloader"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pyperclip>=1.9.0",
+    "requests>=2.32.4",
+    "yt-dlp>=2025.6.9",
+]

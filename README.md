@@ -5,11 +5,12 @@
 ## 功能特色
 
 - 🎯 支援 YouTube 自動生成字幕和手動上傳字幕
-- 🌐 多語言支援（預設英文）
+- 🌐 多語言支援（支援自動偵測影片原始語言）
 - 📋 自動複製到剪貼簿
 - 🧹 清理字幕格式，移除時間戳記和 HTML 標籤
 - 💡 簡單的命令列介面
 - 🔍 可查看影片支援的所有字幕語言
+- ⚡ Version 2.0: 支援 `ytt` 快速指令
 
 ## 安裝
 
@@ -35,9 +36,43 @@ cd 23.01-youtube-transcript-downloader
 uv sync
 ```
 
+### 安裝 ytt 命令 (可選)
+
+如果你想使用更簡短的 `ytt` 命令，可以執行以下步驟：
+
+```bash
+# 確保 ~/.local/bin 存在
+mkdir -p ~/.local/bin
+
+# 建立符號連結
+ln -sf $(pwd)/ytt ~/.local/bin/ytt
+
+# 確認 ~/.local/bin 在你的 PATH 中
+# 對於 fish shell，可以在 ~/.config/fish/config.fish 加入：
+# fish_add_path $HOME/.local/bin
+```
+
 ## 使用方法
 
-### 基本使用
+### 快速使用 (Version 2.0)
+
+如果你已經安裝了 `ytt` 命令：
+
+```bash
+# 自動偵測影片原始語言
+ytt "https://www.youtube.com/watch?v=VIDEO_ID"
+
+# 指定特定語言
+ytt "https://www.youtube.com/watch?v=VIDEO_ID" zh-Hant
+
+# 列出所有可用語言
+ytt "https://www.youtube.com/watch?v=VIDEO_ID" list
+
+# 明確使用自動偵測
+ytt "https://www.youtube.com/watch?v=VIDEO_ID" auto
+```
+
+### 傳統使用方式
 
 1. 互動模式：
 ```bash
@@ -62,6 +97,22 @@ uv run python main.py "https://www.youtube.com/watch?v=VIDEO_ID" --list-langs
 
 ### 使用範例
 
+使用 `ytt` 命令（推薦）：
+```bash
+# 自動偵測並下載影片原始語言字幕
+ytt "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+# 下載繁體中文字幕
+ytt "https://www.youtube.com/watch?v=dQw4w9WgXcQ" zh-Hant
+
+# 下載日文字幕
+ytt "https://youtu.be/dQw4w9WgXcQ" ja
+
+# 查看影片有哪些語言的字幕
+ytt "https://www.youtube.com/watch?v=dQw4w9WgXcQ" list
+```
+
+使用傳統方式：
 ```bash
 # 下載英文字幕（預設）
 uv run python main.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"

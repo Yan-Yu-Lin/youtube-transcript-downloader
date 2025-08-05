@@ -1,0 +1,8 @@
+#!/bin/bash
+# Wrapper script for ytt that ensures uv runs in the correct directory
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Change to the project directory and run the ytt script with uv
+cd "$SCRIPT_DIR" && uv run python ytt "$@"

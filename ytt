@@ -1,4 +1,4 @@
-#!/usr/bin/env -S uv run python
+#!/usr/bin/env -S uv run --project /Users/linyanyu/Desktop/20-29-Development/23-tools/23.01-my-tools/23.01-youtube-transcript-downloader.nosync python
 """
 YouTube 字幕下載工具
 自動下載 YouTube 影片的字幕並複製到剪貼簿
